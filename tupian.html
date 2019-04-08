@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .pic {
+        width: 1000px;
+        overflow: hidden;
+        position: relative;
+        height: 470px;
+        margin: 0 auto;
+      }
+      .pic > img {
+        position: absolute;
+        float: left;
+        top: 0;
+        width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pic">
+      <!-- img[src=pic/pic$.jpg]*8 -->
+      <img src="pic/pic1.jpg" alt="" />
+      <img src="pic/pic2.jpg" alt="" />
+      <img src="pic/pic3.jpg" alt="" />
+      <img src="pic/pic4.jpg" alt="" />
+      <img src="pic/pic5.jpg" alt="" />
+      <img src="pic/pic6.jpg" alt="" />
+      <img src="pic/pic7.jpg" alt="" />
+      <img src="pic/pic8.jpg" alt="" />
+    </div>
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script>
+      var imgNum = $('.pic>img').length
+      var picWidth = $('.pic').width()
+      var imgWidth = $('.pic>img').width()
+      var width = (picWidth - imgWidth) / (imgNum - 1)
+      // for (i = 0; i < imgNum; i++) {
+      //   $('.pic>img')
+      //     .eq(i)
+      //     .css('left', (i * picWidth) / imgNum)
+      // }
+      $('.pic>img').each(function(index) {
+        $(this).css('left', (index * picWidth) / imgNum)
+      })
+      $('.pic>img').mouseenter(function(event) {
+        var ind = $(this).index()
+        $('.pic>img').each(function(index) {
+          if (index <= ind) {
+            $(this).css('left', index * width)
+          } else {
+            $(this).css('left', (index - 1) * width + imgWidth)
+          }
+        })
+      })
+      // var ind = $(this).index()
+      // for (i = 0; i < imgNum; i++) {
+      //   if (i <= ind) {
+      //     $('.pic>img')
+      //       .eq(i)
+      //       .css('left', i * width)
+      //   } else {
+      //     $('.pic>img')
+      //       .eq(i)
+      //       .css('left', (i - 1) * width + imgWidth)
+      //   }
+      // }
+      $('.pic>img').mouseleave(function(event) {
+        $('.pic>img').each(function(index) {
+          $(this).css('left', (index * picWidth) / imgNum)
+        })
+
+        //   $('.pic>img:eq(1)').css('left', 0 * width + imgWidth)
+        //   $('.pic>img:eq(2)').css('left', 1 * width + imgWidth)
+        //   $('.pic>img:eq(3)').css('left', 2 * width + imgWidth)
+        //   $('.pic>img:eq(4)').css('left', 3 * width + imgWidth)
+        //   $('.pic>img:eq(5)').css('left', 4 * width + imgWidth)
+        //   $('.pic>img:eq(6)').css('left', 5 * width + imgWidth)
+        //   $('.pic>img:eq(7)').css('left', 6 * width + imgWidth)
+        // })
+        // $('.pic>img:eq(1)').mouseenter(function(event) {
+        //   $('.pic>img:eq(1)').css('left', 1 * width)
+        //   $('.pic>img:eq(2)').css('left', 1 * width + imgWidth)
+        //   $('.pic>img:eq(3)').css('left', 2 * width + imgWidth)
+        //   $('.pic>img:eq(4)').css('left', 3 * width + imgWidth)
+        //   $('.pic>img:eq(5)').css('left', 4 * width + imgWidth)
+        //   $('.pic>img:eq(6)').css('left', 5 * width + imgWidth)
+        //   $('.pic>img:eq(7)').css('left', 6 * width + imgWidth)
+        // })
+        // $('.pic>img:eq(2)').mouseenter(function(event) {
+        //   $('.pic>img:eq(1)').css('left', 1 * width)
+        //   $('.pic>img:eq(2)').css('left', 2 * width)
+        //   $('.pic>img:eq(3)').css('left', 2 * width + imgWidth)
+        //   $('.pic>img:eq(4)').css('left', 3 * width + imgWidth)
+        //   $('.pic>img:eq(5)').css('left', 4 * width + imgWidth)
+        //   $('.pic>img:eq(6)').css('left', 5 * width + imgWidth)
+        //   $('.pic>img:eq(7)').css('left', 6 * width + imgWidth)
+        // })
+        // $('.pic>img:eq(3)').mouseenter(function(event) {
+        //   $('.pic>img:eq(1)').css('left', 1 * width)
+        //   $('.pic>img:eq(2)').css('left', 2 * width)
+        //   $('.pic>img:eq(3)').css('left', 3 * width)
+        //   $('.pic>img:eq(4)').css('left', 3 * width + imgWidth)
+        //   $('.pic>img:eq(5)').css('left', 4 * width + imgWidth)
+        //   $('.pic>img:eq(6)').css('left', 5 * width + imgWidth)
+        //   $('.pic>img:eq(7)').css('left', 6 * width + imgWidth)
+        // })
+        // $('.pic>img:eq(4)').mouseenter(function(event) {
+        //   $('.pic>img:eq(1)').css('left', 1 * width)
+        //   $('.pic>img:eq(2)').css('left', 2 * width)
+        //   $('.pic>img:eq(3)').css('left', 3 * width)
+        //   $('.pic>img:eq(4)').css('left', 4 * width)
+        //   $('.pic>img:eq(5)').css('left', 4 * width + imgWidth)
+        //   $('.pic>img:eq(6)').css('left', 5 * width + imgWidth)
+        //   $('.pic>img:eq(7)').css('left', 6 * width + imgWidth)
+        // })
+        // $('.pic>img:eq(5)').mouseenter(function(event) {
+        //   $('.pic>img:eq(1)').css('left', 1 * width)
+        //   $('.pic>img:eq(2)').css('left', 2 * width)
+        //   $('.pic>img:eq(3)').css('left', 3 * width)
+        //   $('.pic>img:eq(4)').css('left', 4 * width)
+        //   $('.pic>img:eq(5)').css('left', 5 * width)
+        //   $('.pic>img:eq(6)').css('left', 5 * width + imgWidth)
+        //   $('.pic>img:eq(7)').css('left', 6 * width + imgWidth)
+        // })
+        // $('.pic>img:eq(6)').mouseenter(function(event) {
+        //   $('.pic>img:eq(1)').css('left', 1 * width)
+        //   $('.pic>img:eq(2)').css('left', 2 * width)
+        //   $('.pic>img:eq(3)').css('left', 3 * width)
+        //   $('.pic>img:eq(4)').css('left', 4 * width)
+        //   $('.pic>img:eq(5)').css('left', 5 * width)
+        //   $('.pic>img:eq(6)').css('left', 6 * width)
+        //   $('.pic>img:eq(7)').css('left', 6 * width + imgWidth)
+        // })
+        // $('.pic>img:eq(7)').mouseenter(function(event) {
+        //   $('.pic>img:eq(1)').css('left', 1 * width)
+        //   $('.pic>img:eq(2)').css('left', 2 * width)
+        //   $('.pic>img:eq(3)').css('left', 4 * width)
+        //   $('.pic>img:eq(4)').css('left', 5 * width)
+        //   $('.pic>img:eq(5)').css('left', 5 * width)
+        //   $('.pic>img:eq(6)').css('left', 6 * width)
+        //   $('.pic>img:eq(7)').css('left', 7 * width)
+        // })
+
+        //   $('.pic>img').each(function(index) {
+        //     $(this).css('left', (index * picWidth) / imgNum)
+        //   })
+        // })
+        // $('.pic>img:eq(1)').mouseleave(function(event) {
+        //   $('.pic>img').each(function(index) {
+        //     $(this).css('left', (index * picWidth) / imgNum)
+        //   })
+        // })
+        // $('.pic>img:eq(2)').mouseleave(function(event) {
+        //   $('.pic>img').each(function(index) {
+        //     $(this).css('left', (index * picWidth) / imgNum)
+        //   })
+        // })
+        // $('.pic>img:eq(3)').mouseleave(function(event) {
+        //   $('.pic>img').each(function(index) {
+        //     $(this).css('left', (index * picWidth) / imgNum)
+        //   })
+        // })
+        // $('.pic>img:eq(4)').mouseleave(function(event) {
+        //   $('.pic>img').each(function(index) {
+        //     $(this).css('left', (index * picWidth) / imgNum)
+        //   })
+        // })
+        // $('.pic>img:eq(5)').mouseleave(function(event) {
+        //   $('.pic>img').each(function(index) {
+        //     $(this).css('left', (index * picWidth) / imgNum)
+        //   })
+        // })
+        // $('.pic>img:eq(6)').mouseleave(function(event) {
+        //   $('.pic>img').each(function(index) {
+        //     $(this).css('left', (index * picWidth) / imgNum)
+        //   })
+        // })
+        // $('.pic>img:eq(7)').mouseleave(function(event) {
+        //   $('.pic>img').each(function(index) {
+        //     $(this).css('left', (index * picWidth) / imgNum)
+        //   })
+      })
+    </script>
+  </body>
+</html>
